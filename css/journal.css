@@ -1,0 +1,13 @@
+body {
+  width: 731px;
+  height: 566px;
+}
+h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 300%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  color: rgb(110, 156, 255);
+}
