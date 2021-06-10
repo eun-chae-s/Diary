@@ -10,10 +10,11 @@
 <body>
     <h1 id="date"></h1>
     <div id="text">
-        <input id="writing" type="text">
+        <textarea id="journal" cols="75" rows="20" name="journal">Write your journal...
+        </textarea>
     </div>
     <div id="final">
-        <button>Save!</button>
+        <button id="save" onclick="changeToEdit()">Save!</button>
     </div>
 </body>
 <script>
@@ -23,5 +24,9 @@
     day = d.getDate();
 
     document.getElementById("date").innerHTML = year + "." + month + "." + day;
+
+    function changeToEdit() {
+        document.getElementById("save").innerHTML = "Edit!";
+    }
 </script>
 </html>
