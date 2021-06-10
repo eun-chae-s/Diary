@@ -1,20 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
-
+body {
+  width: 731px;
+  height: 566px;
+}
 #title {
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 h1 {
   font-family: "Nunito", sans-serif;
-  font-size: 60px;
-  padding-left: 50px;
+  font-size: 300%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 #journal {
   display: inline-block;
-  padding-left: 100px;
-  padding-right: 50px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
 }
 #j {
   background-color: rgb(110, 156, 255);
@@ -26,8 +33,11 @@ h1 {
 }
 #progress {
   display: inline-block;
-  padding-left: 100px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
 }
 #p {
   background-color: rgb(110, 156, 255);
