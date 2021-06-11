@@ -3,13 +3,26 @@ body {
   width: 800px;
   height: 800px;
 }
+#back {
+  text-align: right;
+  padding: 0px;
+}
+#b {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  background-color: rgb(110, 156, 255);
+  color: white;
+  border: none;
+}
 h1 {
   font-family: "Nunito", sans-serif;
   font-size: 300%;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-bottom: 10px;
+  margin-top: 0px;
   color: rgb(110, 156, 255);
 }
 #text {
