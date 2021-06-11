@@ -1,4 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap");
 body {
-  width: 731px;
-  height: 566px;
+  width: 800px;
+  height: 800px;
+}
+#back {
+  text-align: right;
+  padding: 0px;
+}
+#b {
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  background-color: rgb(110, 156, 255);
+  color: white;
+  border: none;
+}
+h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: 300%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  color: rgb(110, 156, 255);
+}
+#list {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 700px;
+  height: 600px;
+  border-color: rgb(110, 156, 255);
+  border-style: solid;
 }
