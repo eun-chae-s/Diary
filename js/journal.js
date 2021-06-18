@@ -6,7 +6,13 @@ day = d.getDate();
 document.getElementById("date").innerHTML = year + "." + month + "." + day;
 
 function changeToEdit() {
-    document.getElementById("save").innerHTML = "Edit!";
+    var btn = document.getElementById("save");
+    if (btn.innerHTML == "Save!") {
+        btn.innerHTML = "Edit!";
+    }
+    else {
+        btn.innerHTML = "Save!";
+    }
 }
 
 // Add a weather section
