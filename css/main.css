@@ -1,5 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
-body {
+.preload {
+  background-color: rgb(110, 156, 255);
+  width: 800px;
+  height: 800px;
+  position: fixed;
+  transition: all 7s ease;
+}
+.preload > * {
+  margin: 0px;
+}
+
+.preload > h1 {
+  font-size: 50px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.preload > h2 {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.preload > h3 {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: lighter;
+  text-align: center;
+}
+.preload-finish {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main {
   width: 800px;
   height: 800px;
 }
