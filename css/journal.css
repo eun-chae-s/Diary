@@ -32,7 +32,7 @@ h1 {
   word-wrap: break-word;
 }
 textarea {
-  border-color: rgb(110, 156, 255);
+  border-color: #6e9cff;
   border-width: 5px;
   font-family: "Mukta", sans-serif;
   font-size: 18px;
