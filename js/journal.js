@@ -40,6 +40,8 @@ function changeToEdit() {
         t.replaceChild(text, box);
         btn.innerHTML = "Save!";
     }
+
+    // Add the text to the database with the date;
 }
 
 // Add a weather section
