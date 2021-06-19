@@ -9,10 +9,12 @@ function changeToEdit() {
     var btn = document.getElementById("save");
     
     var t = document.getElementById("text");
+    let journal_text;
     if (btn.innerHTML == "Save!") {
         var text = document.getElementById("journal");
         var box = document.createElement('div');
         box.id = "box";
+        journal_text = text.value;
         box.innerHTML = text.value;
         box.style.borderColor = "#6e9cff";
         box.style.borderStyle = "solid";
@@ -28,6 +30,7 @@ function changeToEdit() {
         var box = document.getElementById("box");
         var text = document.createElement('textarea');
         text.id = "journal";
+        journal_text = box.innerHTML;
         text.innerHTML = box.innerHTML;
         text.style.borderColor = "#6e9cff";
         text.style.borderWidth = "5px";
@@ -42,6 +45,21 @@ function changeToEdit() {
     }
 
     // Add the text to the database with the date;
+    let journals;
+    let dates;
+    if (localStorage.getItem('journals') === null && localStorage.getItem('dates') === null) {
+        journals=[];
+        dates = [];
+    }
+    else{
+        journals = JSON.parse(localStorage.getItem('journals'));
+        dates = JSON.parse(localStorage.getItem('dates'));
+    }
+    // Save the item
+    journals.push(journal_text);
+    dates.push(year + "." + month + "." + day);
+    localStorage.setItem('journals', JSON.stringify(journals));
+    localStorage.setItem('dates', JSON.stringify(dates));
 }
 
 // Add a weather section
