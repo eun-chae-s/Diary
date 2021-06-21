@@ -12,8 +12,25 @@
         <button id="b" onclick="window.open('progress.html')">Check your progress</button>
     </div>
     <h1 id="date"></h1>
+    <div id="weather">
+        Weather?
+        <select>
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="rainy">Rainy</option>
+            <option value="windy">Windy</option>
+            <option value="groomy">Groomy</option>
+        </select>
+    </div>
+    <!-- When the pointer is on the button, show the description -->
+    <div class="song">
+        <span>Song?</span>
+        <input id="chosen_song" type="text" placeholder="Type the title of song">
+        
+    </div>
+    <div class="hide">Type the title of the song which represents your mood or your day</div>
     <div id="text">
-        <textarea id="journal" cols="75" rows="20" name="journal" placeholder="Write your journal..."></textarea>
+        <textarea id="journal" cols="75" rows="15" name="journal" placeholder="Write your journal..."></textarea>
     </div>
     <div id="final">
         <button id="save" onclick="changeToEdit()">Save!</button>

@@ -31,6 +31,44 @@ h1 {
   margin-top: 0px;
   color: rgb(110, 156, 255);
 }
+#weather {
+  position: relative;
+  padding-left: 10%;
+  padding-bottom: 5px;
+  font-family: "Nunito", sans-serif;
+  color: rgb(57, 118, 250);
+}
+#weather select {
+  margin-left: 20px;
+  font-size: 13px;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  font-family: "Nunito", sans-serif;
+  background-color: rgb(110, 156, 255);
+}
+.song {
+  padding-left: 10%;
+  font-family: "Nunito", sans-serif;
+  color: rgb(99, 139, 224);
+  margin-bottom: 10px;
+}
+.hide {
+  display: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  padding-left: 10%;
+}
+.song:hover + .hide {
+  display: block;
+  color: #6e9cff;
+}
+#chosen_song {
+  width: 200px;
+  padding-left: 10px;
+  margin-left: 20px;
+}
 #text {
   margin-left: 10%;
   margin-right: 10%;
