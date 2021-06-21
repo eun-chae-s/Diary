@@ -11,9 +11,15 @@ body {
   width: 150px;
   height: 30px;
   font-size: 15px;
-  background-color: rgb(110, 156, 255);
+  background-color: rgb(110, 120, 255);
   color: white;
   border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#b:hover {
+  background-color: white;
+  color: rgb(110, 120, 255);
 }
 h1 {
   font-family: "Nunito", sans-serif;

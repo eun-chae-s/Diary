@@ -4,7 +4,7 @@
   width: 800px;
   height: 800px;
   position: fixed;
-  transition: all 7s ease;
+  transition: all 10s ease-in;
 }
 .preload > * {
   margin: 0px;
@@ -66,6 +66,12 @@ h1 {
   border-style: none;
   width: 200px;
   height: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+#j:hover {
+  background-color: white;
+  color: rgb(110, 156, 255);
 }
 #progress {
   display: inline-block;
@@ -76,10 +82,16 @@ h1 {
   margin: auto;
 }
 #p {
-  background-color: rgb(110, 156, 255);
+  background-color: rgb(110, 120, 255);
   font-size: 17px;
   color: white;
   border-style: none;
   width: 200px;
   height: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+#p:hover {
+  background-color: white;
+  color: rgb(110, 120, 255);
 }
