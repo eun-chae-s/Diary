@@ -13,12 +13,10 @@ function changeToEdit() {
 
     var main_song = document.querySelector('.song');
 
-    var journal_text;
     if (btn.innerHTML == "Save!") {
         var text = document.getElementById("journal");
         var box = document.createElement('div');
         box.id = "box";
-        journal_text = text.value;
         box.innerHTML = text.value;
         box.style.borderColor = "#6e9cff";
         box.style.borderStyle = "solid";
@@ -61,7 +59,6 @@ function changeToEdit() {
         var box = document.getElementById("box");
         var text = document.createElement('textarea');
         text.id = "journal";
-        journal_text = box.innerHTML;
         text.innerHTML = box.innerHTML;
         text.style.borderColor = "#6e9cff";
         text.style.borderWidth = "5px";
@@ -108,14 +105,6 @@ function changeToEdit() {
         s.id = "chosen_song";
         main_song.replaceChild(s, song);
 
-        var journal = {date: year + "." + month + "." + day,
-                        weather: ww.innerHTML,
-                        song: s.value,
-                        text: text.innerHTML};
-
-
-        saveEditedJournal(journal);
-
         btn.innerHTML = "Save!";
     }
 }
@@ -131,23 +120,20 @@ function saveToLocalStorage(journal) {
         journals = JSON.parse(localStorage.getItem('journals'));
     }
     // Save the item
-    journals.push(journal);
-    localStorage.setItem('journals', JSON.stringify(journals));
-}
-
-// A function in which we save the edited version of journal in the local storage again
-function saveEditedJournal(journal) {
-    // Add the text to the database with the date;
-    let journals;
-    journals = JSON.parse(localStorage.getItem('journals'));
-
-    // Save the item
-    for (let i = 0; i < journals.length; i++) {
+    let i = 0;
+    while (i < journals.length) {
         if (journals[i].date === journal.date) {;
             journals[i] = journal;
             break;
-        };
+        }
+        else {
+            i++;
+        }
     };
 
+    if (i == journals.length) {
+        journals.push(journal);
+    }
+    
     localStorage.setItem('journals', JSON.stringify(journals));
 }
