@@ -13,7 +13,7 @@ function changeToEdit() {
 
     var main_song = document.querySelector('.song');
 
-    let journal_text;
+    var journal_text;
     if (btn.innerHTML == "Save!") {
         var text = document.getElementById("journal");
         var box = document.createElement('div');
@@ -48,6 +48,13 @@ function changeToEdit() {
         s.id ="s_text";
         main_song.replaceChild(s, song);
 
+        var journal = {date: year + "." + month + "." + day,
+                        weather: weather,
+                    song: song.value,
+                    text: text.value};
+
+        saveToLocalStorage(journal);
+        
         btn.innerHTML = "Edit!";
     }
     else {
@@ -101,23 +108,46 @@ function changeToEdit() {
         s.id = "chosen_song";
         main_song.replaceChild(s, song);
 
+        var journal = {date: year + "." + month + "." + day,
+                        weather: ww.innerHTML,
+                        song: s.value,
+                        text: text.innerHTML};
+
+
+        saveEditedJournal(journal);
+
         btn.innerHTML = "Save!";
     }
+}
 
-    // // Add the text to the database with the date;
-    // let journals;
-    // let dates;
-    // if (localStorage.getItem('journals') === null && localStorage.getItem('dates') === null) {
-    //     journals=[];
-    //     dates = [];
-    // }
-    // else{
-    //     journals = JSON.parse(localStorage.getItem('journals'));
-    //     dates = JSON.parse(localStorage.getItem('dates'));
-    // }
-    // // Save the item
-    // journals.push(journal_text);
-    // dates.push(year + "." + month + "." + day);
-    // localStorage.setItem('journals', JSON.stringify(journals));
-    // localStorage.setItem('dates', JSON.stringify(dates));
+// A function in which we save the journal to the local storage
+function saveToLocalStorage(journal) {
+    // Add the text to the database with the date;
+    let journals;
+    if (localStorage.getItem('journals') === null) {
+        journals = []
+    }
+    else{
+        journals = JSON.parse(localStorage.getItem('journals'));
+    }
+    // Save the item
+    journals.push(journal);
+    localStorage.setItem('journals', JSON.stringify(journals));
+}
+
+// A function in which we save the edited version of journal in the local storage again
+function saveEditedJournal(journal) {
+    // Add the text to the database with the date;
+    let journals;
+    journals = JSON.parse(localStorage.getItem('journals'));
+
+    // Save the item
+    for (let i = 0; i < journals.length; i++) {
+        if (journals[i].date === journal.date) {;
+            journals[i] = journal;
+            break;
+        };
+    };
+
+    localStorage.setItem('journals', JSON.stringify(journals));
 }
