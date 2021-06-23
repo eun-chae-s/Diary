@@ -39,3 +39,25 @@ h1 {
   border-color: rgb(110, 156, 255);
   border-style: solid;
 }
+.arrowR,
+.arrowL {
+  border: none;
+  width: 100px;
+  height: 30px;
+  font-family: "Nunito", sans-serif;
+  background-color: rgb(110, 156, 255);
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.arrowL:hover,
+.arrowR:hover {
+  color: rgb(110, 156, 255);
+  background-color: white;
+}
+.arrowL {
+  margin-left: 550px;
+  margin-right: 0px;
+}
