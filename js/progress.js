@@ -2,8 +2,32 @@ let data;
 data = JSON.parse(localStorage.getItem('journals'));
 
 const box = document.getElementById('list');
+var row1 = document.createElement('div');
+row1.style.height = '160px';
+row1.style.marginBottom = '3px';
+
+var row2 = document.createElement('div');
+row2.style.height = '160px';
+row2.style.marginBottom = '3px';
+
+var row3 = document.createElement('div');
+row3.style.height = '160px';
+row3.style.marginBottom = '3px';
+
+box.appendChild(row1);
+box.appendChild(row2);
+box.appendChild(row3);
 
 for (let i = 0; i < data.length; i++) {
+    let row;
+    if (i < 3) {
+        row = row1;
+    } else if (3 <= i < 6) {
+        row = row2;
+    } else {
+        row = row3;
+    }
+
     var card = document.createElement('div');
     var text = document.createElement('h1');
     text.innerHTML = data[i].date;
@@ -55,11 +79,10 @@ for (let i = 0; i < data.length; i++) {
     card.appendChild(text);
     card.appendChild(button);
     card.appendChild(d);
-    box.appendChild(card);
-    // if (i != 0 && i % 3 == 0) {
-        
-    // } else {
-
-    // }
     
+    row.appendChild(card);
+    
+    if (i == 8) {
+        break;
+    }
 };
