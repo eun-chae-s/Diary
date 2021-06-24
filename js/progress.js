@@ -46,8 +46,10 @@ for (let i = 0; i < data.length; i++) {
     button.style.backgroundColor = 'rgb(110, 156, 255)';
     button.style.color = 'white';
     button.style.cursor = 'pointer';
-    button.id = i;
+    button.style.transition = 'all 0.3s ease';
+    button.id = 'b' + i;
     button.style.marginRight = '2px';
+    
 
     // delete button
     // will replace with the icon
@@ -59,7 +61,8 @@ for (let i = 0; i < data.length; i++) {
     d.style.backgroundColor = 'rgb(155, 130, 255)';
     d.style.color = 'white';
     d.style.cursor = 'pointer';
-    d.id = i;
+    d.id = 'd' + i;
+    d.addEventListener('click', deleteJournal(i));
 
     // Styling the card
     card.style.display = 'inline-block';
@@ -85,4 +88,40 @@ for (let i = 0; i < data.length; i++) {
     if (i == 8) {
         break;
     }
+};
+
+var button = document.getElementById('list').querySelector('button');
+if (button.id[0] == 'b') {
+    button.addEventListener('click', openModal(parseInt(button.id[1])));
+}
+
+function openModal(i) {
+    var date = document.createElement('h1');
+    date.innerHTML = data[i].date;
+    var weather = document.createElement('h3');
+    weather.innerHTML = data[i].weather;
+    var song = document.createElement('h3');
+    song.innerHTML = data[i].song;
+    var text = document.createElement('p');
+    text.innerHTML = data[i].text;
+
+    var page = document.createElement('div');
+    page.appendChild(date);
+    page.appendChild(weather);
+    page.appendChild(song);
+    page.appendChild(text);
+    
+    page.style.zIndex = '2';
+    page.style.backgroundColor = 'white';
+    page.style.border = 'solid';
+    page.style.display = 'block';
+    page.style.position = 'fixed';
+    page.style.width = '200px';
+    page.style.height = '200px';
+    page.style.overflow = 'auto'; // enable scroll if needed
+
+}
+
+function deleteJournal(i) {
+
 };

@@ -36,8 +36,7 @@ h1 {
   margin-right: 10%;
   width: 700px;
   height: 600px;
-  border-color: rgb(110, 156, 255);
-  border-style: solid;
+  border: none;
 }
 .arrowR,
 .arrowL {
