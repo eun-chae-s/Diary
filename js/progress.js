@@ -18,6 +18,9 @@ box.appendChild(row1);
 box.appendChild(row2);
 box.appendChild(row3);
 
+var pages = document.getElementById('pages');
+
+
 for (let i = 0; i < data.length; i++) {
     let row;
     if (i < 3) {
@@ -46,7 +49,6 @@ for (let i = 0; i < data.length; i++) {
     button.style.backgroundColor = 'rgb(110, 156, 255)';
     button.style.color = 'white';
     button.style.cursor = 'pointer';
-    button.style.transition = 'all 0.3s ease';
     button.id = 'b' + i;
     button.style.marginRight = '2px';
     
@@ -84,43 +86,61 @@ for (let i = 0; i < data.length; i++) {
     card.appendChild(d);
     
     row.appendChild(card);
-    
-    if (i == 8) {
-        break;
-    }
-};
 
-var button = document.getElementById('list').querySelector('button');
-if (button.id[0] == 'b') {
-    button.addEventListener('click', openModal(parseInt(button.id[1])));
-}
-
-function openModal(i) {
-    var date = document.createElement('h1');
+    // Add the modal
+    var date = document.createElement('h3');
     date.innerHTML = data[i].date;
-    var weather = document.createElement('h3');
-    weather.innerHTML = data[i].weather;
-    var song = document.createElement('h3');
-    song.innerHTML = data[i].song;
+    date.style.fontSize = '30px';
+    date.style.marginTop = '10px';
+    date.style.marginLeft = '10px';
+    var weather = document.createElement('p');
+    weather.innerHTML = '&#127758' + '  ' + data[i].weather;
+    weather.style.marginLeft = '10px';
+    var song = document.createElement('p');
+    song.innerHTML = '&#127911' + '  ' + data[i].song;
+    song.style.marginLeft = '10px';
     var text = document.createElement('p');
-    text.innerHTML = data[i].text;
+    text.innerHTML = '"' + data[i].text + '"';
+    text.style.marginLeft = '10px';
 
     var page = document.createElement('div');
     page.appendChild(date);
     page.appendChild(weather);
     page.appendChild(song);
     page.appendChild(text);
+    page.style.fontFamily = "Nunito, sans-serif";
     
-    page.style.zIndex = '2';
+    page.style.zIndex = '200';
     page.style.backgroundColor = 'white';
     page.style.border = 'solid';
-    page.style.display = 'block';
-    page.style.position = 'fixed';
-    page.style.width = '200px';
-    page.style.height = '200px';
-    page.style.overflow = 'auto'; // enable scroll if needed
+    page.style.width = '300px';
+    page.style.height = '300px';
+    page.style.justifyContent = 'center';
+    page.style.alignItems = 'center';
+    page.style.display = 'none';
 
-}
+
+    page.id = 'p' + i;
+
+    pages.appendChild(page);
+    
+    if (i == 8) {
+        break;
+    }
+};
+
+pages.style.display = 'block';
+
+var buttons = document.getElementById('list').querySelectorAll('button');
+buttons.forEach((button) => {
+    if (button.id[0] == 'b') {
+        var i = button.id[1];
+        button.onclick = () => {
+            var page = document.getElementById('p' + i);
+            page.style.display = 'block';
+        };
+    }
+});
 
 function deleteJournal(i) {
 
