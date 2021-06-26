@@ -1,3 +1,5 @@
+// Reference: https://webdesign.tutsplus.com/tutorials/how-to-build-flexible-modal-dialogs-with-html-css-and-javascript--cms-33500
+
 let data;
 data = JSON.parse(localStorage.getItem('journals'));
 
@@ -103,41 +105,64 @@ for (let i = 0; i < data.length; i++) {
     text.innerHTML = '"' + data[i].text + '"';
     text.style.marginLeft = '10px';
 
+    var page_full = document.createElement('div');
+    page_full.className = 'modal';
+    page_full.id = 'modal' + i;
+    // page_full.style.position = 'fixed';
+    // page_full.style.top = '0';
+    // page_full.style.bottom = '0';
+    // page_full.style.left = '0';
+    // page_full.style.right = '0';
+    // page_full.style.display = 'flex';
+    // page_full.style.justifyContent = 'center';
+    // page_full.style.alignItems = 'center';
+    // page_full.style.visibility = 'hidden';
+    // page_full.style.opacity = '0';
+    // page_full.style.cursor = 'pointer';
+    // page_full.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
     var page = document.createElement('div');
-    page.appendChild(date);
-    page.appendChild(weather);
-    page.appendChild(song);
-    page.appendChild(text);
     page.style.fontFamily = "Nunito, sans-serif";
-    
-    page.style.zIndex = '200';
-    page.style.backgroundColor = 'white';
     page.style.border = 'solid';
-    page.style.width = '300px';
-    page.style.height = '300px';
-    page.style.justifyContent = 'center';
-    page.style.alignItems = 'center';
-    page.style.display = 'none';
+    page.style.width = '400px';
+    page.style.height = '400px';
+    page.style.position = 'relative';
+    page.style.backgroundColor = 'white';
+   
+    
+
+    page_header = document.createElement('header');
+    page_header.style.marginTop = '30px';
+    page_header.style.marginLeft = '20px';
+    page_header.appendChild(date);
+    page.appendChild(page_header);
 
 
-    page.id = 'p' + i;
+    page_content = document.createElement('div');
+    page_content.style.display = 'block';
+    page_content.style.marginLeft = '20px';
+    page_content.style.marginTop = '20px';
+    page_content.appendChild(weather);
+    page_content.appendChild(song);
+    page_content.appendChild(text);
+    page.appendChild(page_content);
+    
+    page_full.appendChild(page);
 
-    pages.appendChild(page);
+    document.body.appendChild(page_full);
     
     if (i == 8) {
         break;
     }
 };
 
-pages.style.display = 'block';
-
 var buttons = document.getElementById('list').querySelectorAll('button');
 buttons.forEach((button) => {
     if (button.id[0] == 'b') {
         var i = button.id[1];
         button.onclick = () => {
-            var page = document.getElementById('p' + i);
-            page.style.display = 'block';
+            var page = document.getElementById('modal' + i);
+            page.classList.add("is-visible");
         };
     }
 });
