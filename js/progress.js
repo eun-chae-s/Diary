@@ -63,15 +63,9 @@ for (let i = 0; i < data.length; i++) {
     // delete button
     // will replace with the icon
     var d = document.createElement('button');
+    d.className = 'delete';
     d.innerHTML = 'delete';
-    d.style.width = '70px';
-    d.style.height = '30px';
-    d.style.border = 'none';
-    d.style.backgroundColor = 'rgb(155, 130, 255)';
-    d.style.color = 'white';
-    d.style.cursor = 'pointer';
     d.id = 'd' + i;
-    d.addEventListener('click', deleteJournal(i));
 
     // Styling the card
     card.style.display = 'inline-block';
@@ -161,6 +155,9 @@ buttons.forEach((button) => {
     }
 });
 
-function deleteJournal(i) {
-
-};
+document.addEventListener('click', e => {
+    if (e.target.className == 'delete') {
+        var index = e.target.id;
+        data.splice(parseInt(index[1]), 1);
+    } 
+})
