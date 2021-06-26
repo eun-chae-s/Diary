@@ -3,6 +3,13 @@
 let data;
 data = JSON.parse(localStorage.getItem('journals'));
 
+// Event Listeners
+document.addEventListener('click', e => {
+    if (e.target == document.querySelector('.modal.is-visible')) {
+        document.querySelector('.modal.is-visible').classList.remove('is-visible');
+    }
+})
+
 const box = document.getElementById('list');
 var row1 = document.createElement('div');
 row1.style.height = '160px';
@@ -19,8 +26,6 @@ row3.style.marginBottom = '3px';
 box.appendChild(row1);
 box.appendChild(row2);
 box.appendChild(row3);
-
-var pages = document.getElementById('pages');
 
 
 for (let i = 0; i < data.length; i++) {
@@ -108,18 +113,6 @@ for (let i = 0; i < data.length; i++) {
     var page_full = document.createElement('div');
     page_full.className = 'modal';
     page_full.id = 'modal' + i;
-    // page_full.style.position = 'fixed';
-    // page_full.style.top = '0';
-    // page_full.style.bottom = '0';
-    // page_full.style.left = '0';
-    // page_full.style.right = '0';
-    // page_full.style.display = 'flex';
-    // page_full.style.justifyContent = 'center';
-    // page_full.style.alignItems = 'center';
-    // page_full.style.visibility = 'hidden';
-    // page_full.style.opacity = '0';
-    // page_full.style.cursor = 'pointer';
-    // page_full.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 
     var page = document.createElement('div');
     page.style.fontFamily = "Nunito, sans-serif";
@@ -142,6 +135,7 @@ for (let i = 0; i < data.length; i++) {
     page_content.style.display = 'block';
     page_content.style.marginLeft = '20px';
     page_content.style.marginTop = '20px';
+    page_content.style.marginRight = '20px';
     page_content.appendChild(weather);
     page_content.appendChild(song);
     page_content.appendChild(text);
