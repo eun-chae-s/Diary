@@ -27,6 +27,7 @@ box.appendChild(row1);
 box.appendChild(row2);
 box.appendChild(row3);
 
+let list = [];
 
 for (let i = 0; i < data.length; i++) {
     let row;
@@ -51,15 +52,9 @@ for (let i = 0; i < data.length; i++) {
 
     // view button
     var button = document.createElement('button');
+    button.className = 'view';
     button.innerHTML = 'view';
-    button.style.width = '70px';
-    button.style.height = '30px';
-    button.style.border = 'none';
-    button.style.backgroundColor = 'rgb(110, 156, 255)';
-    button.style.color = 'white';
-    button.style.cursor = 'pointer';
     button.id = 'b' + i;
-    button.style.marginRight = '2px';
     
     // delete button
     // will replace with the icon
@@ -86,44 +81,36 @@ for (let i = 0; i < data.length; i++) {
     var song = document.createElement('p');
     song.innerHTML = '&#127911' + '  ' + data[i].song;
     song.style.marginLeft = '10px';
-    var text = document.createElement('p');
-    text.innerHTML = '"' + data[i].text + '"';
-    text.style.marginLeft = '10px';
+    var content = document.createElement('p');
+    content.innerHTML = '"' + data[i].text + '"';
+    content.style.marginLeft = '10px';
 
     var page_full = document.createElement('div');
     page_full.className = 'modal';
     page_full.id = 'modal' + i;
 
     var page = document.createElement('div');
-    page.style.fontFamily = "Nunito, sans-serif";
-    page.style.border = 'solid';
-    page.style.width = '400px';
-    page.style.height = '400px';
-    page.style.position = 'relative';
-    page.style.backgroundColor = 'white';
-   
+    page.className = 'page';
     
 
     page_header = document.createElement('header');
-    page_header.style.marginTop = '30px';
-    page_header.style.marginLeft = '20px';
     page_header.appendChild(date);
     page.appendChild(page_header);
 
 
     page_content = document.createElement('div');
-    page_content.style.display = 'block';
-    page_content.style.marginLeft = '20px';
-    page_content.style.marginTop = '20px';
-    page_content.style.marginRight = '20px';
+    page_content.className = 'con';
+    
     page_content.appendChild(weather);
     page_content.appendChild(song);
-    page_content.appendChild(text);
+    page_content.appendChild(content);
     page.appendChild(page_content);
     
     page_full.appendChild(page);
 
     document.body.appendChild(page_full);
+
+    list.push(card);
     
     if (i == 8) {
         break;
@@ -157,6 +144,26 @@ deletes.forEach((del) => {
             }
             row.removeChild(card);
             data.splice(index, 1);
+            list.splice(index, 1);
+            localStorage.setItem('journals', JSON.stringify(data));
+            reorderCards();
         }
     }
 })
+
+function reorderCards() {
+    row1.innerHTML = '';
+    row2.innerHTML = '';
+    row3.innerHTML = '';
+    for (let i = 0; i < data.length; i++) {
+        let row;
+        if (i < 3) {
+            row = row1;
+        } else if (3 <= i < 6) {
+            row = row2;
+        } else {
+            row = row3;
+        }
+        row.appendChild(list[i]);
+    }
+}

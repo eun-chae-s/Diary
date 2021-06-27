@@ -85,6 +85,11 @@ h1 {
   background-color: rgb(155, 130, 255);
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+.delete:hover {
+  color: rgb(155, 130, 255);
+  background-color: white;
 }
 .card {
   display: inline-block;
@@ -96,4 +101,36 @@ h1 {
   border: none;
   box-shadow: 6px 6px 5px grey;
   margin-left: 10px;
+}
+.page {
+  font-family: "Nunito", sans-serif;
+  border: solid;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background-color: white;
+}
+.view {
+  width: 70px;
+  height: 30px;
+  border: none;
+  background-color: rgb(110, 156, 255);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 2px;
+}
+.view:hover {
+  color: rgb(110, 156, 255);
+  background-color: white;
+}
+.con {
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+header {
+  margin-top: 30px;
+  margin-left: 20px;
 }
