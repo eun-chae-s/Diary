@@ -86,3 +86,14 @@ h1 {
   color: white;
   cursor: pointer;
 }
+.card {
+  display: inline-block;
+  width: 220px;
+  height: 150px;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+  border: none;
+  box-shadow: 6px 6px 5px grey;
+  margin-left: 10px;
+}

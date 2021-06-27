@@ -39,6 +39,8 @@ for (let i = 0; i < data.length; i++) {
     }
 
     var card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'c' + i;
     var text = document.createElement('h1');
     text.innerHTML = data[i].date;
     text.style.fontSize = '25px';
@@ -59,7 +61,6 @@ for (let i = 0; i < data.length; i++) {
     button.id = 'b' + i;
     button.style.marginRight = '2px';
     
-
     // delete button
     // will replace with the icon
     var d = document.createElement('button');
@@ -67,21 +68,6 @@ for (let i = 0; i < data.length; i++) {
     d.innerHTML = 'delete';
     d.id = 'd' + i;
 
-    // Styling the card
-    card.style.display = 'inline-block';
-    card.style.width = '220px';
-    card.style.height = '150px';
-    card.style.textAlign = 'center';
-    card.style.justifyContent = 'center';
-    card.style.verticalAlign = 'middle';
-    
-    // style - border color
-    card.style.border = 'none';
-    // style - shadow
-    card.style.boxShadow = '6px 6px 5px grey';
-
-    card.style.marginLeft = '10px';
-    
     card.appendChild(text);
     card.appendChild(button);
     card.appendChild(d);
@@ -155,9 +141,22 @@ buttons.forEach((button) => {
     }
 });
 
-document.addEventListener('click', e => {
-    if (e.target.className == 'delete') {
-        var index = e.target.id;
-        data.splice(parseInt(index[1]), 1);
-    } 
+var deletes = document.querySelectorAll('.delete');
+deletes.forEach((del) => {
+    if (del.id[0] == 'd') {
+        del.onclick = () => {
+            var index = parseInt(del.id[1]);
+            var card = document.getElementById('c' + del.id[1]);
+            let row;
+            if (index < 3) {
+                row = row1;
+            } else if (3 <= index < 6) {
+                row = row2;
+            } else {
+                row = row3;
+            }
+            row.removeChild(card);
+            data.splice(index, 1);
+        }
+    }
 })
